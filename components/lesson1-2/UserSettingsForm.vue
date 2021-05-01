@@ -9,7 +9,8 @@
       <span class="form-label mb-2">Newsletter</span>
       <div class="flex justify-between items-center">
         <p class="mr-4">Send you occasional news and updates.</p>
-        <ToggleInput v-model="receiveNewsletter" />
+        {{ receiveNewsletter }}
+        <toggle-input v-model="receiveNewsletter"></toggle-input>
       </div>
     </div>
     <div class="text-right">
@@ -19,7 +20,7 @@
 </template>
 
 <script>
-import ToggleInput from "./ToggleInput";
+import ToggleInput from "@/components/ToggleInput";
 export default {
   components: {
     ToggleInput

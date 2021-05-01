@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div>
+      <UserSettingsForm />
       <div class="max-w-xs mx-auto mb-8">
         <media-card>
           <img
@@ -33,6 +34,7 @@
 import Logo from "~/components/Logo.vue";
 import AnnouncmentModal from "@/components/lesson-4-global-events/announcment-modal";
 import MediaCard from "@/components/MediaCard";
+import UserSettingsForm from "../components/lesson1-2/UserSettingsForm";
 
 export default {
   data() {
@@ -41,6 +43,7 @@ export default {
     };
   },
   components: {
+    UserSettingsForm,
     MediaCard,
     AnnouncmentModal,
     Logo
