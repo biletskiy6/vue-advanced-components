@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div>
+      <pikaday v-model="date"></pikaday>
       <UserSettingsForm />
       <div class="max-w-xs mx-auto mb-8">
         <media-card>
@@ -35,14 +36,17 @@ import Logo from "~/components/Logo.vue";
 import AnnouncmentModal from "@/components/lesson-4-global-events/announcment-modal";
 import MediaCard from "@/components/MediaCard";
 import UserSettingsForm from "../components/lesson1-2/UserSettingsForm";
+import Pikaday from "../components/Pikaday";
 
 export default {
   data() {
     return {
-      modalOpen: false
+      modalOpen: false,
+      date: '1941-06-22'
     };
   },
   components: {
+    Pikaday,
     UserSettingsForm,
     MediaCard,
     AnnouncmentModal,
