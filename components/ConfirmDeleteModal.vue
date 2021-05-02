@@ -1,6 +1,5 @@
 <template>
-  <div class="modal-backdrop" v-show="show">
-    <div class="modal">
+  <app-modal :show="show" @close="cancel">
       <h1 class="text-center text-2xl font-bold mb-4">
         Are you sure?
       </h1>
@@ -15,12 +14,13 @@
           Delete it
         </button>
       </div>
-    </div>
-  </div>
+  </app-modal>
 </template>
 
 <script>
+import AppModal from "./app-modal";
 export default {
+  components: {AppModal},
   props: ["show", "accountId"],
   methods: {
     cancel() {
@@ -31,30 +31,5 @@ export default {
       this.$emit("close")
     }
   },
-  watch: {
-    show: {
-      immediate: true,
-      handler: show => {
-        if(!process.client) return
-        if (show) {
-          document.body.style.setProperty("overflow", "hidden")
-        } else {
-          document.body.style.removeProperty("overflow")
-        }
-      }
-    }
-  },
-  created() {
-    if(!process.client) return
-    const escapeHandler = e => {
-      if (e.key === "Escape" && this.show) {
-        this.cancel()
-      }
-    }
-    document.addEventListener("keydown", escapeHandler)
-    this.$once("hook:destroyed", () => {
-      document.removeEventListener("keydown", escapeHandler)
-    })
-  }
 }
 </script>

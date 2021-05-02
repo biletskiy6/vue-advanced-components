@@ -10,9 +10,7 @@
 
       <client-only>
         <button @click="modalOpen = true" class="btn btn-blue">Open Modal</button>
-        <portal to="modals" v-if="modalOpen">
         <announcment-modal @close="modalOpen = false" :show="modalOpen" />
-        </portal>
       </client-only>
 
 
@@ -55,7 +53,7 @@ import PrimaryButton from "../components/primary-button";
 export default {
   data() {
     return {
-      modalOpen: true,
+      modalOpen: false,
       accountId: 9,
       date: '1941-06-22'
     };
