@@ -4,6 +4,9 @@
       <pikaday v-model="date"></pikaday>
       <UserSettingsForm />
       <div class="max-w-xs mx-auto mb-8">
+        <p v-for="item in 20">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi cupiditate earum, illo minima optio repellat voluptatem. Dolores numquam, voluptas! Ab inventore molestiae nisi odit officiis repellendus veritatis. Accusamus adipisci culpa cupiditate debitis deserunt in iusto quasi quo repellendus rerum!
+        </p>
         <media-card>
           <img
             slot="image"
@@ -25,6 +28,7 @@
 
       <!--      <UserSettingsForm />-->
       <client-only>
+        <button @click="modalOpen = true" class="btn btn-blue">Open Modal</button>
         <announcment-modal @close="modalOpen = false" :show="modalOpen" />
       </client-only>
     </div>
@@ -33,7 +37,7 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
-import AnnouncmentModal from "@/components/lesson-4-global-events/announcment-modal";
+import AnnouncmentModal from "@/components/announcment-modal";
 import MediaCard from "@/components/MediaCard";
 import UserSettingsForm from "../components/lesson1-2/UserSettingsForm";
 import Pikaday from "../components/Pikaday";
@@ -41,7 +45,7 @@ import Pikaday from "../components/Pikaday";
 export default {
   data() {
     return {
-      modalOpen: false,
+      modalOpen: true,
       date: '1941-06-22'
     };
   },
