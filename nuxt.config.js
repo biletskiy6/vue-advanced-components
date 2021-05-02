@@ -28,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '@/plugins/portal-vue', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -38,9 +39,11 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+
     // Doc: https://bootstrap-vue.js.org
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    'portal-vue/nuxt'
   ],
   /*
   ** Axios module configuration

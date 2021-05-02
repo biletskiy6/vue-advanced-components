@@ -16,6 +16,7 @@
     "bootstrap-vue": "^2.0.0",
     "nuxt": "^2.0.0",
     "pikaday": "^1.8.2",
+    "portal-vue": "^2.1.7",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0"
   },
