@@ -3,7 +3,10 @@
     <div>
       <pikaday v-model="date"></pikaday>
       <UserSettingsForm />
-
+      <primary-button>
+        <h4 slot="text">Btn text</h4>
+        <span slot="icon">Icon</span>
+      </primary-button>
 
       <client-only>
         <button @click="modalOpen = true" class="btn btn-blue">Open Modal</button>
@@ -47,6 +50,7 @@ import MediaCard from "@/components/MediaCard";
 import UserSettingsForm from "../components/lesson1-2/UserSettingsForm";
 import Pikaday from "../components/Pikaday";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
+import PrimaryButton from "../components/primary-button";
 
 export default {
   data() {
@@ -57,6 +61,7 @@ export default {
     };
   },
   components: {
+    PrimaryButton,
     ConfirmDeleteModal,
     Pikaday,
     UserSettingsForm,
