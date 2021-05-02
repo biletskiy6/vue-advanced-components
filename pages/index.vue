@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <div>
-      <pikaday v-model="date"></pikaday>
-      <UserSettingsForm />
+      <contact-list :pseudo-slot="(contact) => contact.name.first">
+        <a href="#" slot-scope="param">{{ param.contact.name.first }}</a>
+      </contact-list>
+<!--      <pikaday v-model="date"></pikaday>-->
+<!--      <UserSettingsForm />-->
       <primary-button>
         <h4 slot="text">Btn text</h4>
         <span slot="icon">Icon</span>
@@ -49,6 +52,7 @@ import UserSettingsForm from "../components/lesson1-2/UserSettingsForm";
 import Pikaday from "../components/Pikaday";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import PrimaryButton from "../components/primary-button";
+import ContactList from "../components/ContactList";
 
 export default {
   data() {
@@ -59,6 +63,7 @@ export default {
     };
   },
   components: {
+    ContactList,
     PrimaryButton,
     ConfirmDeleteModal,
     Pikaday,
