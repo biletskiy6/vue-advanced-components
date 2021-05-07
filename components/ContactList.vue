@@ -1,38 +1,27 @@
-<template>
-  <div class="card">
-    <h1 class="text-2xl font-bold mb-6">Your Contacts</h1>
-    <div>
-      <div v-for="contact in contacts" :key="contact.id" class="flex items-center spaced-y-6">
-        <img :src="contact.picture.medium" class="h-12 w-12 rounded-full block mr-2" alt="">
-        <div>
-          <div class="font-bold">
-            {{ pseudoSlot(contact) }}
-          </div>
-          <div class="font-bold">
-            <slot :contact="contact"></slot>
-          </div>
-          <div class="text-grey-dark">
-            {{ contact.email }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   name: "ContactList",
-  props: ["pseudoSlot"],
   data() {
     return {
-      contacts: []
-    }
+      json: null,
+      loading: true
+    };
   },
   created() {
     fetch("/contacts.json")
       .then(response => response.json())
-      .then(contacts => (this.contacts = contacts))
+      .then(json => {
+        setTimeout(() => {
+          this.json = json;
+          this.loading = false;
+        }, 2000);
+      });
+  },
+  render(createElement) {
+    return this.$scopedSlots.default({
+      contacts: this.json,
+      loading: this.loading
+    });
   }
-}
+};
 </script>

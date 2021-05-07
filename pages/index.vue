@@ -1,16 +1,38 @@
 <template>
   <div class="container">
     <div>
-      <hello-world tag="a">My Custom Content</hello-world>
-      <contact-list :pseudo-slot="contact => contact.name.first">
-        <a href="#" slot-scope="param">{{ param.contact.name.first }}</a>
+      <contact-list>
+        <div slot-scope="{ contacts, loading }" class="card">
+          <h1 class="text-2xl font-bold mb-6">Your Contacts</h1>
+          <div v-if="loading">Loading...</div>
+          <div>
+            <div
+              v-for="contact in contacts"
+              :key="contact.id"
+              class="flex items-center spaced-y-6"
+            >
+              <img
+                :src="contact.picture.medium"
+                class="h-12 w-12 rounded-full block mr-2"
+                alt=""
+              />
+              <div>
+                <div class="font-bold">
+                  test
+                </div>
+                <div class="font-bold">
+                  <slot :contact="contact"></slot>
+                </div>
+                <div class="text-grey-dark">
+                  {{ contact.email }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </contact-list>
       <!--      <pikaday v-model="date"></pikaday>-->
       <!--      <UserSettingsForm />-->
-      <primary-button>
-        <h4 slot="text">Btn text</h4>
-        <span slot="icon">Icon</span>
-      </primary-button>
 
       <client-only>
         <button @click="modalOpen = true" class="btn btn-blue">
