@@ -1,21 +1,23 @@
 <template>
   <div class="container">
     <div>
-      <contact-list :pseudo-slot="(contact) => contact.name.first">
+      <hello-world tag="a">My Custom Content</hello-world>
+      <contact-list :pseudo-slot="contact => contact.name.first">
         <a href="#" slot-scope="param">{{ param.contact.name.first }}</a>
       </contact-list>
-<!--      <pikaday v-model="date"></pikaday>-->
-<!--      <UserSettingsForm />-->
+      <!--      <pikaday v-model="date"></pikaday>-->
+      <!--      <UserSettingsForm />-->
       <primary-button>
         <h4 slot="text">Btn text</h4>
         <span slot="icon">Icon</span>
       </primary-button>
 
       <client-only>
-        <button @click="modalOpen = true" class="btn btn-blue">Open Modal</button>
+        <button @click="modalOpen = true" class="btn btn-blue">
+          Open Modal
+        </button>
         <announcment-modal @close="modalOpen = false" :show="modalOpen" />
       </client-only>
-
 
       <portal-target name="modals"></portal-target>
       <div class="max-w-xs mx-auto mb-8">
@@ -39,7 +41,6 @@
       </div>
 
       <!--      <UserSettingsForm />-->
-
     </div>
   </div>
 </template>
@@ -53,13 +54,14 @@ import Pikaday from "../components/Pikaday";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import PrimaryButton from "../components/primary-button";
 import ContactList from "../components/ContactList";
+import HelloWorld from "../components/HelloWorld.vue";
 
 export default {
   data() {
     return {
       modalOpen: false,
       accountId: 9,
-      date: '1941-06-22'
+      date: "1941-06-22"
     };
   },
   components: {
@@ -70,105 +72,107 @@ export default {
     UserSettingsForm,
     MediaCard,
     AnnouncmentModal,
-    Logo
+    Logo,
+    HelloWorld
   }
 };
 </script>
 
 <style lang="scss">
-  @mixin triangle ($width: 15px, $direction: "down", $color: #333333) {
-    @if $direction == "up" {
-      width: 0;
-      height: 0;
-      border-left: $width / 2 solid transparent;
-      border-right: $width / 2 solid transparent;
-      border-bottom: $width / 2 solid $color;
-    } @else if $direction == "left" {
-      width: 0;
-      height: 0;
-      border-top: $width / 2 solid transparent;
-      border-bottom: $width / 2 solid transparent;
-      border-right: $width / 2 solid $color;
-    } @else if $direction == "right" {
-      width: 0;
-      height: 0;
-      border-top: $width / 2 solid transparent;
-      border-bottom: $width / 2 solid transparent;
-      border-left: $width / 2 solid $color;
-    } @else {
-      width: 0;
-      height: 0;
-      border-left: $width / 2 solid transparent;
-      border-right: $width / 2 solid transparent;
-      border-top: $width / 2 solid $color;
-    }
+@mixin triangle($width: 15px, $direction: "down", $color: #333333) {
+  @if $direction == "up" {
+    width: 0;
+    height: 0;
+    border-left: $width / 2 solid transparent;
+    border-right: $width / 2 solid transparent;
+    border-bottom: $width / 2 solid $color;
+  } @else if $direction == "left" {
+    width: 0;
+    height: 0;
+    border-top: $width / 2 solid transparent;
+    border-bottom: $width / 2 solid transparent;
+    border-right: $width / 2 solid $color;
+  } @else if $direction == "right" {
+    width: 0;
+    height: 0;
+    border-top: $width / 2 solid transparent;
+    border-bottom: $width / 2 solid transparent;
+    border-left: $width / 2 solid $color;
+  } @else {
+    width: 0;
+    height: 0;
+    border-left: $width / 2 solid transparent;
+    border-right: $width / 2 solid transparent;
+    border-top: $width / 2 solid $color;
   }
+}
 
-  .triangle {
+.triangle {
+  position: absolute;
+  transition: transform 0.25s ease;
+  /*background-color: #333;*/
+  &-down {
+    @include triangle(42px, "down");
+    top: 5px;
+    left: 5px;
+    transform: translateY(-30px);
+  }
+  &-up {
+    @include triangle(42px, "up");
+    bottom: 5px;
+    left: 5px;
+    transform: translateY(30px);
+  }
+  &-right {
+    @include triangle(42px, "right");
+    left: 5px;
+    top: 5px;
+    transform: translateX(-30px);
+  }
+  &-left {
+    @include triangle(42px, "left");
+    right: 5px;
+    top: 5px;
+    transform: translateX(30px);
+  }
+}
+
+.primary-button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  background-color: transparent;
+  border: 2px solid red;
+  overflow: hidden;
+  h6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    transition: transform .25s ease;
-    /*background-color: #333;*/
-    &-down {
-      @include triangle(42px, 'down');
-      top: 5px;
-      left: 5px;
-      transform: translateY(-30px);
-    }
-    &-up {
-      @include triangle(42px, 'up');
-      bottom: 5px;
-      left: 5px;
-      transform: translateY(30px);
-
-    }
-    &-right {
-      @include triangle(42px, 'right');
-      left: 5px;
-      top: 5px;
-      transform: translateX(-30px);
-    }
-    &-left {
-      @include triangle(42px, 'left');
-      right: 5px;
-      top: 5px;
-      transform: translateX(30px);
-    }
-  }
-
-  .primary-button {
-    position: relative;
-    width: 56px;
-    height: 56px;
+    width: 80%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
     background-color: transparent;
-    border: 2px solid red;
-    overflow: hidden;
-    h6 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      width: 80%;
-      height: 90%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 101;
-      background-color: transparent;
-      transition: background-color .25s ease 1s;
-    }
-    &:hover {
-      .triangle {
-        transition: transform .25s ease, background-color .25s .15s;
-        background-color: #333;
-        &-down, &-up {
-          transform: translateY(0px);
-        }
-        &-left, &-right {
-          transform: translateX(0px);
-        }
+    transition: background-color 0.25s ease 1s;
+  }
+  &:hover {
+    .triangle {
+      transition: transform 0.25s ease, background-color 0.25s 0.15s;
+      background-color: #333;
+      &-down,
+      &-up {
+        transform: translateY(0px);
+      }
+      &-left,
+      &-right {
+        transform: translateX(0px);
       }
     }
   }
+}
 
 .container {
   margin: 0 auto;
