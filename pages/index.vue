@@ -4,10 +4,13 @@
       <label class="form-label">Tags:</label>
       <tag-input v-model="tags"></tag-input>
     </div>
-    <div class="max-w-sm mx-auto mt-8 card">
-      <label class="form-label">Renderless TagInput:</label>
-      <inline-tag-input v-model="tags"></inline-tag-input>
-    </div>
+    <with-dimensions>
+      <div slot-scope="{ width }" class="max-w-sm mx-auto mt-8 card">
+        {{ width }}
+        <label class="form-label">Renderless TagInput:</label>
+        <inline-tag-input v-model="tags"></inline-tag-input>
+      </div>
+    </with-dimensions>
   </div>
 </template>
 
@@ -24,6 +27,7 @@ import HelloWorld from "../components/HelloWorld.vue";
 import TagInput from "../components/TagInput.vue";
 import RenderlessTagInput from "../components/RenderlessTagInput.vue";
 import InlineTagInput from "../components/InlineTagInput.vue";
+import WithDimensions from "../components/WithDimensions.vue";
 
 export default {
   data() {
@@ -46,7 +50,8 @@ export default {
     HelloWorld,
     TagInput,
     RenderlessTagInput,
-    InlineTagInput
+    InlineTagInput,
+    WithDimensions
   }
 };
 </script>
