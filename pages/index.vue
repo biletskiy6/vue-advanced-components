@@ -1,68 +1,12 @@
 <template>
-  <div class="container">
-    <div>
-      <contact-list>
-        <div slot-scope="{ contacts, loading }" class="card">
-          <h1 class="text-2xl font-bold mb-6">Your Contacts</h1>
-          <div v-if="loading">Loading...</div>
-          <div>
-            <div
-              v-for="contact in contacts"
-              :key="contact.id"
-              class="flex items-center spaced-y-6"
-            >
-              <img
-                :src="contact.picture.medium"
-                class="h-12 w-12 rounded-full block mr-2"
-                alt=""
-              />
-              <div>
-                <div class="font-bold">
-                  test
-                </div>
-                <div class="font-bold">
-                  <slot :contact="contact"></slot>
-                </div>
-                <div class="text-grey-dark">
-                  {{ contact.email }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </contact-list>
-      <!--      <pikaday v-model="date"></pikaday>-->
-      <!--      <UserSettingsForm />-->
-
-      <client-only>
-        <button @click="modalOpen = true" class="btn btn-blue">
-          Open Modal
-        </button>
-        <announcment-modal @close="modalOpen = false" :show="modalOpen" />
-      </client-only>
-
-      <portal-target name="modals"></portal-target>
-      <div class="max-w-xs mx-auto mb-8">
-        <media-card>
-          <img
-            slot="image"
-            src="https://images.unsplash.com/photo-1495835788122-ca48931258be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=acc48b0187b28f7a221362b843f15755&auto=format&fit=crop&w=3450&q=80"
-            alt=""
-          />
-          <template slot="heading">Default card heading goes here</template>
-          <template slot="text">dasdas</template>
-        </media-card>
-
-        <button class="primary-button">
-          <span class="triangle triangle-down"></span>
-          <span class="triangle triangle-right"></span>
-          <span class="triangle triangle-up"></span>
-          <span class="triangle triangle-left"></span>
-          <h6>TG</h6>
-        </button>
-      </div>
-
-      <!--      <UserSettingsForm />-->
+  <div class="">
+    <div class="max-w-sm mx-auto mt-8 card">
+      <label class="form-label">Tags:</label>
+      <tag-input v-model="tags"></tag-input>
+    </div>
+    <div class="max-w-sm mx-auto mt-8 card">
+      <label class="form-label">Renderless TagInput:</label>
+      <inline-tag-input v-model="tags"></inline-tag-input>
     </div>
   </div>
 </template>
@@ -77,13 +21,17 @@ import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import PrimaryButton from "../components/primary-button";
 import ContactList from "../components/ContactList";
 import HelloWorld from "../components/HelloWorld.vue";
+import TagInput from "../components/TagInput.vue";
+import RenderlessTagInput from "../components/RenderlessTagInput.vue";
+import InlineTagInput from "../components/InlineTagInput.vue";
 
 export default {
   data() {
     return {
       modalOpen: false,
       accountId: 9,
-      date: "1941-06-22"
+      date: "1941-06-22",
+      tags: ["tag10", "awesome", "hello"]
     };
   },
   components: {
@@ -95,12 +43,15 @@ export default {
     MediaCard,
     AnnouncmentModal,
     Logo,
-    HelloWorld
+    HelloWorld,
+    TagInput,
+    RenderlessTagInput,
+    InlineTagInput
   }
 };
 </script>
 
-<style lang="scss">
+<style l, InlineTagInputang="scss">
 @mixin triangle($width: 15px, $direction: "down", $color: #333333) {
   @if $direction == "up" {
     width: 0;
