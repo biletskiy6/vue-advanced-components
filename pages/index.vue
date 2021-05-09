@@ -1,16 +1,15 @@
 <template>
   <div class="">
-    <div class="max-w-sm mx-auto mt-8 card">
-      <label class="form-label">Tags:</label>
-      <tag-input v-model="tags"></tag-input>
-    </div>
-    <with-dimensions>
-      <div slot-scope="{ width }" class="max-w-sm mx-auto mt-8 card">
-        {{ width }}
-        <label class="form-label">Renderless TagInput:</label>
-        <inline-tag-input v-model="tags"></inline-tag-input>
-      </div>
-    </with-dimensions>
+    <accordion-list>
+      <accordion-item :item-id="1">
+        <template slot="header">Item A</template>
+        <template slot="content">Item A content test..</template>
+      </accordion-item>
+      <accordion-item :item-id="2">
+        <template slot="header">Item B</template>
+        <template slot="content">Item B content test..</template>
+      </accordion-item>
+    </accordion-list>
   </div>
 </template>
 
@@ -28,6 +27,8 @@ import TagInput from "../components/TagInput.vue";
 import RenderlessTagInput from "../components/RenderlessTagInput.vue";
 import InlineTagInput from "../components/InlineTagInput.vue";
 import WithDimensions from "../components/WithDimensions.vue";
+import AccordionList from "../components/accordion/AccordionList.vue";
+import AccordionItem from "../components/accordion/AccordionItem.vue";
 
 export default {
   data() {
@@ -51,7 +52,9 @@ export default {
     TagInput,
     RenderlessTagInput,
     InlineTagInput,
-    WithDimensions
+    WithDimensions,
+    AccordionList,
+    AccordionItem
   }
 };
 </script>
