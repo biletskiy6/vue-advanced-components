@@ -1,34 +1,12 @@
 <template>
   <div class="">
-    <accordion-list>
-      <accordion-item :item-id="1">
-        <template slot="header">Item A</template>
-        <template slot="content">Item A content test..</template>
-      </accordion-item>
-      <accordion-item :item-id="2">
-        <template slot="header">Item B</template>
-        <template slot="content">Item B content test..</template>
-      </accordion-item>
-    </accordion-list>
+    <contact-list></contact-list>
   </div>
 </template>
 
 <script>
 import Logo from "~/components/Logo.vue";
-import AnnouncmentModal from "@/components/announcment-modal";
-import MediaCard from "@/components/MediaCard";
-import UserSettingsForm from "../components/lesson1-2/UserSettingsForm";
-import Pikaday from "../components/Pikaday";
-import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
-import PrimaryButton from "../components/primary-button";
-import ContactList from "../components/ContactList";
-import HelloWorld from "../components/HelloWorld.vue";
-import TagInput from "../components/TagInput.vue";
-import RenderlessTagInput from "../components/RenderlessTagInput.vue";
-import InlineTagInput from "../components/InlineTagInput.vue";
-import WithDimensions from "../components/WithDimensions.vue";
-import AccordionList from "../components/accordion/AccordionList.vue";
-import AccordionItem from "../components/accordion/AccordionItem.vue";
+import ContactList from "@/components/contact-list";
 
 export default {
   data() {
@@ -40,26 +18,12 @@ export default {
     };
   },
   components: {
-    ContactList,
-    PrimaryButton,
-    ConfirmDeleteModal,
-    Pikaday,
-    UserSettingsForm,
-    MediaCard,
-    AnnouncmentModal,
-    Logo,
-    HelloWorld,
-    TagInput,
-    RenderlessTagInput,
-    InlineTagInput,
-    WithDimensions,
-    AccordionList,
-    AccordionItem
+    ContactList
   }
 };
 </script>
 
-<style l, InlineTagInputang="scss">
+<style InlineTagInputang="scss">
 @mixin triangle($width: 15px, $direction: "down", $color: #333333) {
   @if $direction == "up" {
     width: 0;

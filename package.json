@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "@shopify/draggable": "^1.0.0-beta.8",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0",
     "element-resize-detector": "^1.2.2",
